@@ -8,35 +8,55 @@
     body {
         margin: 0;
         min-height: 100vh;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: "Segoe UI", Arial, sans-serif;
-
-        /* Background Image */
-        background: 
-            linear-gradient(rgba(255, 230, 230, 0.85), rgba(255, 230, 230, 0.85)),
-            url("bg.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        background: linear-gradient(135deg, #fde2e2, #f7f7f7);
     }
 
-    /* Optional subtle repeated sorry text */
-    body::before {
-        content: "sorry   sorry   sorry   sorry   sorry   sorry";
+    /* Animated SORRY background */
+    .sorry-bg {
         position: fixed;
         inset: 0;
-        font-size: 80px;
-        color: rgba(192, 57, 43, 0.06);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        overflow: hidden;
+        z-index: 0;
         pointer-events: none;
-        transform: rotate(-20deg);
     }
 
+    .sorry-text {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        font-size: 70px;
+        font-weight: bold;
+        color: rgba(192, 57, 43, 0.08);
+        animation: floatUp 18s linear infinite;
+    }
+
+    .sorry-text:nth-child(2) {
+        animation-duration: 22s;
+        font-size: 60px;
+        opacity: 0.05;
+    }
+
+    .sorry-text:nth-child(3) {
+        animation-duration: 26s;
+        font-size: 80px;
+        opacity: 0.06;
+    }
+
+    @keyframes floatUp {
+        from {
+            transform: translateY(100vh);
+        }
+        to {
+            transform: translateY(-150vh);
+        }
+    }
+
+    /* Card */
     .card-container {
         perspective: 1200px;
         z-index: 1;
@@ -64,7 +84,6 @@
         box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         padding: 38px;
         box-sizing: border-box;
-
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -105,7 +124,6 @@
         line-height: 1.75;
     }
 
-    /* Mobile */
     @media (max-width: 480px) {
         .card {
             width: 90vw;
@@ -115,6 +133,20 @@
 </head>
 <body>
 
+<!-- Background sorry animation -->
+<div class="sorry-bg">
+    <div class="sorry-text">
+        sorry&nbsp;&nbsp;sorry&nbsp;&nbsp;sorry&nbsp;&nbsp;sorry&nbsp;&nbsp;sorry
+    </div>
+    <div class="sorry-text">
+        sorry&nbsp;&nbsp;sorry&nbsp;&nbsp;sorry&nbsp;&nbsp;sorry&nbsp;&nbsp;sorry
+    </div>
+    <div class="sorry-text">
+        sorry&nbsp;&nbsp;sorry&nbsp;&nbsp;sorry&nbsp;&nbsp;sorry&nbsp;&nbsp;sorry
+    </div>
+</div>
+
+<!-- Card -->
 <div class="card-container">
     <div class="card" onclick="this.classList.toggle('flipped')">
 
