@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>I'm Truly Sorry</title>
+<title>I’m Truly Sorry</title>
+
 <style>
     body {
         margin: 0;
@@ -10,17 +11,40 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #fde2e2, #f7f7f7);
         font-family: "Segoe UI", Arial, sans-serif;
+
+        /* Background Image */
+        background: 
+            linear-gradient(rgba(255, 230, 230, 0.85), rgba(255, 230, 230, 0.85)),
+            url("bg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* Optional subtle repeated sorry text */
+    body::before {
+        content: "sorry   sorry   sorry   sorry   sorry   sorry";
+        position: fixed;
+        inset: 0;
+        font-size: 80px;
+        color: rgba(192, 57, 43, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        pointer-events: none;
+        transform: rotate(-20deg);
     }
 
     .card-container {
         perspective: 1200px;
+        z-index: 1;
     }
 
     .card {
         width: 420px;
-        min-height: 300px;
+        min-height: 320px;
         position: relative;
         transform-style: preserve-3d;
         transition: transform 0.9s ease;
@@ -35,10 +59,10 @@
         position: absolute;
         inset: 0;
         backface-visibility: hidden;
-        border-radius: 20px;
-        background: #fff;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-        padding: 35px;
+        border-radius: 22px;
+        background: white;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        padding: 38px;
         box-sizing: border-box;
 
         display: flex;
@@ -51,11 +75,11 @@
     .front h1 {
         color: #c0392b;
         font-size: 34px;
-        margin-bottom: 15px;
+        margin-bottom: 18px;
     }
 
     .emojis {
-        font-size: 32px;
+        font-size: 34px;
         margin-bottom: 25px;
     }
 
@@ -72,13 +96,20 @@
 
     .back h2 {
         color: #c0392b;
-        margin-bottom: 15px;
+        margin-bottom: 16px;
     }
 
     .back p {
         color: #444;
         font-size: 16px;
-        line-height: 1.7;
+        line-height: 1.75;
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+        .card {
+            width: 90vw;
+        }
     }
 </style>
 </head>
