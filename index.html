@@ -6,24 +6,24 @@
 <style>
     body {
         margin: 0;
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #fbd3d3, #f6f6f6);
+        background: linear-gradient(135deg, #fde2e2, #f7f7f7);
         font-family: "Segoe UI", Arial, sans-serif;
     }
 
     .card-container {
-        perspective: 1000px;
+        perspective: 1200px;
     }
 
     .card {
-        width: 380px;
-        height: 260px;
+        width: 420px;
+        min-height: 300px;
         position: relative;
         transform-style: preserve-3d;
-        transition: transform 0.8s;
+        transition: transform 0.9s ease;
         cursor: pointer;
     }
 
@@ -33,43 +33,46 @@
 
     .card-face {
         position: absolute;
-        width: 100%;
-        height: 100%;
+        inset: 0;
         backface-visibility: hidden;
-        border-radius: 16px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        padding: 35px;
+        box-sizing: border-box;
+
         display: flex;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
         text-align: center;
-        padding: 30px;
-        box-sizing: border-box;
     }
 
     /* Front */
-    .front {
-        background: white;
-    }
-
     .front h1 {
         color: #c0392b;
-        font-size: 32px;
+        font-size: 34px;
         margin-bottom: 15px;
     }
 
-    .front .emojis {
-        font-size: 30px;
+    .emojis {
+        font-size: 32px;
+        margin-bottom: 25px;
+    }
+
+    .hint {
+        margin-top: auto;
+        font-size: 14px;
+        color: #777;
     }
 
     /* Back */
     .back {
-        background: white;
         transform: rotateY(180deg);
     }
 
     .back h2 {
         color: #c0392b;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 
     .back p {
@@ -77,46 +80,35 @@
         font-size: 16px;
         line-height: 1.7;
     }
-
-    .hint {
-        position: absolute;
-        bottom: -40px;
-        width: 100%;
-        text-align: center;
-        color: #666;
-        font-size: 14px;
-    }
 </style>
 </head>
 <body>
 
 <div class="card-container">
     <div class="card" onclick="this.classList.toggle('flipped')">
-        <!-- Front Side -->
+
+        <!-- Front -->
         <div class="card-face front">
-            <div>
-                <h1>I Am Truly Sorry</h1>
-                <div class="emojis">😔💔🙏</div>
-            </div>
+            <h1>I Am Truly Sorry</h1>
+            <div class="emojis">😔💔🙏</div>
+            <div class="hint">Click the card ❤️</div>
         </div>
 
-        <!-- Back Side -->
+        <!-- Back -->
         <div class="card-face back">
-            <div>
-                <h2>I’m Truly Sorry</h2>
-                <p>
-                    I know words can’t undo what happened,  
-                    but I need you to know how deeply sorry I am.
-                    <br><br>
-                    I never meant to hurt you, and it breaks my heart knowing I did.
-                    Please believe that I regret it sincerely.
-                    <br><br>
-                    If there’s a chance for forgiveness, I promise to do better.
-                </p>
-            </div>
+            <h2>I’m Truly Sorry</h2>
+            <p>
+                I know words can’t undo what happened, but I need you to know
+                how deeply sorry I am.
+                <br><br>
+                I never meant to hurt you, and it breaks my heart knowing I did.
+                Please believe that I regret it sincerely.
+                <br><br>
+                If there’s a chance for forgiveness, I promise to do better.
+            </p>
         </div>
+
     </div>
-    <div class="hint">Click the card 💌</div>
 </div>
 
 </body>
